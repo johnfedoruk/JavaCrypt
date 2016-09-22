@@ -17,6 +17,9 @@
 - [x] Create About page
 - [ ] Discussion on importance of information security
 - [ ] Display SSLLabs A+ report
+- [ ] Include description of how JavaCrypt works
+- [ ] Include Flash video of how JavaCrypt works
+- [ ] Include disclaimer
 - [ ] Include License
 
 ## Social Media ##
