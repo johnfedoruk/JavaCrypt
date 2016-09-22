@@ -1,0 +1,124 @@
+<style>
+  .txMsg {
+
+  }
+  .rxMgs {
+
+  }
+  .message {
+    /* TODO */
+    /* find out why this is workin glike shit */
+    text-transform:none;
+    padding:13px;
+    border-radius:9px;
+    width: auto !important;
+    max-width:80%;
+    word-break:normal;
+    height:auto;
+    white-space:inherit;
+    line-height:110%;
+    text-align:left;
+    overflow: inherit;
+    flex-wrap: wrap;
+    display: inline !important;
+  }#toaster {
+  position: fixed;
+  top: 56px;
+  height: 70px;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+md-toast.md-toast-theme div.md-toast-content{
+    background-color: rgba(0, 0, 0, 0.5); !important;
+    border-radius: 20px;
+    margin: 15px;
+    min-width: auto !important;
+    left: auto !important;
+    width: 105px !important;
+    float: right;
+}
+</style>
+<main flex layout="column" ng-controller="MessagesController">
+  <md-content id="messageArea" flex style="padding: 10px;" ng-click="blur()">
+    <article flex>
+      <section flex class="md-whiteframe-4dp" style="padding:10px;margin-top:5px;word-break:break-word;">
+        <h2>
+          Hello {{me}}
+        </h2>
+        <h1>
+          Welcome to the <font style="color:darkSlateGray;font-size:26px;">{{chatroom}}</font> chatroom
+        </h1>
+        <div style="width:100%" layout="row">
+          <ng-md-icon icon="warning" size="48"
+          style="fill:yellow;background-color:black;padding:10px;border-radius:35px;max-height:50px;">
+          </ng-md-icon>
+          <div flex>
+            <p style="word-break: break-word;vertical-align:center;padding:10px;">
+              <a style="padding-top:-10px;" href="#">Click here</a> for more information about data privacy.
+            </p>
+          </div>
+        </div>
+        <p>
+          Have fun <b><font color="#F89820">Java</font><font color="#5382A1">Crypting</font></b>!
+        </p>
+      </section>
+      <section flex ng-repeat="message in messages" layout="row">
+        <span flex layout="row" ng-if="message.event">
+          <span flex>
+          </span>
+          <i>{{message.username}}
+            <span ng-if="message.event=='login'">logged in</span>
+            <span ng-if="message.event=='logout'">logged out</span>
+          </i>
+          <span flex>
+          </span>
+        </span>
+        <span flex layout="row" ng-if="message.content">
+          <div flex ng-if="messages[$index].username==me">
+          </div>
+          <div layout="column">
+            <div flex style="font-style:italic;" ng-if="messages[$index-1].username!=messages[$index].username&&messages[$index].username!=me">
+              {{message.username}}
+            </div>
+            <!--
+            <md-button class="md-raised message"
+            ng-class="{'md-warn': message.username == me, 'md-primary': message.username != me}"
+            >-->
+
+            <md-button class="md-raised message"
+            md-theme="chat"
+            ng-class="{'md-accent': message.username == me,'md-primary': message.username != me}"
+            >
+              <md-tooltip md-direction="top">
+                {{message.datetime|date:"fullDate"}}
+                <br>
+                {{message.datetime|date:"shortTime"}}
+              </md-tooltip>
+              {{message.content}}
+            </md-button>
+          </div>
+          <div flex ng-if="messages[$index].username!=me">
+          </div>
+        </span>
+      </section>
+    </article>
+  </md-content>
+  <footer layout='row' style="max-height:60px;min-height:60px;margin:10px 6px;"
+  class="md-whiteframe-6dp" ng-click="focus()">
+    <md-input-container class="md-block" flex style="padding:0;margin:15px;font-size:20px;">
+      <input id="chatInput" placeholder="Enter a secret message" ng-enter="send()" ng-model="input"/>
+    </md-input-container>
+    <md-button aria-label="Send message" class="md-raised md-warn" style="" ng-click="send()">
+      <ng-md-icon icon="forum" size="36" style="fill:white;margin:0;padding:0;"></ng-md-icon>
+    </md-button>
+  </footer>
+</main>
+<script>
+/*
+var raw=document.getElementById('messageArea');if(raw.scrollTop+
+raw.offsetHeight>raw.scrollHeight-500)setTimeout(function(){raw.scrollTop=
+raw.scrollHeight+1000;},300);setTimeout(function(){var x=document.
+getElementById('chatInput');x.blur();x.focus();},10);/*just some magic for
+the android browser when focusing on the message area...*/
+</script>

@@ -1,0 +1,294 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+	  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <style>
+      body,html {
+        overflow:hidden;
+      }
+      main{
+        position: relative;
+      }
+      section {
+        padding: 3px;
+      }
+      footer {
+
+      }
+      md-sidenav, md-sidenav md-content, md-sidenav img, md-sidenav md-list,
+      md-sidenav md-subheader, md-sidenav .md-subheader,md-sidenav md-sticky,
+      md-sidenav h3, md-sidenav h4, md-sidenav p {
+        background:#1d1f20 !important;
+        color: white !important;
+      }
+      * {
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        scrollbar-base-color: #1d1f20 !important;
+        scrollbar-track-color: #1d1f20 !important;
+        scrollbar-face-color: #1d1f20 !important;
+        scrollbar-arrow-color: #1d1f20 !important;
+      }
+      md-sidenav h3, md-sidenav h4 {
+        background: transparent !important;
+        color: white !important;
+      }
+      @-moz-document url-prefix() {
+        md-sidenav, md-sidenav md-content, md-sidenav img, md-sidenav md-list,
+        md-sidenav md-subheader, md-sidenav .md-subheader, md-sidenav p {
+          background: white !important;
+          color: black !important;
+        }
+        md-sidenav h3, md-sidenav h4 {
+          background: transparent !important;
+          color: black !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        background: transparent;
+        display: none;
+      }
+        /* for multiline tooltop */
+        md-tooltip .md-content {
+          height: auto;
+        }
+    </style>
+  </head>
+  <div id="toaster"></div>
+  <body ng-app="MyApp" id="body" ng-controller="MainController" layout="column"
+  md-swipe-right="openSidenav('left')" md-swipe-left="closeSidenav('left')">
+    <style>
+      md-toolbar {
+        /*
+        background: rgba(181,104,23,1);
+        background: -moz-linear-gradient(top, rgba(181,104,23,1) 6%, rgba(148,63,16,1) 32%, rgba(148,63,16,1) 32%, rgba(131,42,13,1) 45%);
+        background: -webkit-gradient(left top, left bottom, color-stop(6%, rgba(181,104,23,1)), color-stop(32%, rgba(148,63,16,1)), color-stop(32%, rgba(148,63,16,1)), color-stop(45%, rgba(131,42,13,1)));
+        background: -webkit-linear-gradient(top, rgba(181,104,23,1) 6%, rgba(148,63,16,1) 32%, rgba(148,63,16,1) 32%, rgba(131,42,13,1) 45%);
+        background: -o-linear-gradient(top, rgba(181,104,23,1) 6%, rgba(148,63,16,1) 32%, rgba(148,63,16,1) 32%, rgba(131,42,13,1) 45%);
+        background: -ms-linear-gradient(top, rgba(181,104,23,1) 6%, rgba(148,63,16,1) 32%, rgba(148,63,16,1) 32%, rgba(131,42,13,1) 45%);
+        background: linear-gradient(to bottom, rgba(181,104,23,1) 6%, rgba(148,63,16,1) 32%, rgba(148,63,16,1) 32%, rgba(131,42,13,1) 45%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b56817', endColorstr='#832a0d', GradientType=0 );
+        */
+        background-color: 	white !important;
+      }
+    </style>
+    <md-toolbar layout="row" style="min-height:70px;">
+      <span flex="10" hide show-gt-md>
+      </span>
+      <md-button aria-label="Open sidenav" hide-gt-md style="fill:white;"
+      ng-click="toggleSideNav('left')">
+        <ng-md-icon icon="menu" size="36" style="fill:black;"></ng-md-icon>
+      </md-button>
+      <div flex layout="column">
+        <div flex>
+        </div>
+        <h2 flex style="padding:0;margin:0;margin-top:10px;">
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+        </h2>
+        <div flex>
+        </div>
+      </div>
+
+      <span  ng-controller="LinksController" style="margin-top:10px;" hide show-gt-sm>
+      <md-button class="md-fab" aria-label="" ng-click="null"
+      style="background:rgba(255,255,255,0.95);padding:5px!;
+      height:40px;width:40px;"
+      ng-repeat="link in links" ng-click="null">
+        <ng-md-icon icon="{{link.icon}}" size="24"
+        class="md-avatar"
+        style="fill:{{link.fill}};" ng-if="link.icon!='./images/wpgit.svg'&&link.icon!='./images/ssllabs.svg'">
+        </ng-md-icon>
+        <md-icon md-svg-src="{{link.icon}}" aria-label="" class="md-avatar"
+        style="border-radius:0;margin-right:10px;width:29px;height:29px;margin-left:2;"
+        ng-if="link.icon=='./images/wpgit.svg'||link.icon=='./images/ssllabs.svg'"></md-icon>
+      </md-button>
+    </span>
+      <md-button aria-label="logout" onclick="location.reload();" ng-hide="!loggedIn">
+        <ng-md-icon icon="logout" style="fill:black;" size="36"></ng-md-icon>
+      </md-button>
+    </md-toolbar>
+    <div layout="row" flex ng-controller="LinksController">
+      <md-sidenav md-component-id='left' style="overflow-x:hidden;"
+      md-is-locked-open="$mdMedia('gt-md')"
+      class="md-sidenav-left md-whiteframe-8dp" layout="column">
+        <div style="min-height:140px;max-height:140px;" flex layout="row">
+          <img ng-src="./images/javacrypt.svg" style="background-color:transparent;padding:20px;" flex/>
+        </div>
+        <md-content flex>
+          <md-list class="md-dense" flex ng-hide="!loggedIn">
+            <md-subheader class="md-no-sticky">
+              Status
+            </md-subheader>
+            <md-list-item class="md-3-line">
+              <ng-md-icon icon="show_chart" size="36"
+              class="md-avatar"
+              style="fill:orchid">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column" style="color:white;margin-top:6px;">
+                <p style="font-size:23px;">
+                  {{username}}
+                </p>
+                <p style="font-size:17px;">
+                  {{chatroom}}
+                </p>
+                <p>
+                  {{datetime|date:'short'}}
+                </p>
+              </div>
+            </md-list-item>
+          </md-list>
+          <md-list class="md-dense" flex ng-controller="UserlistController" ng-hide="!loggedIn">
+            <md-subheader class="md-no-sticky">
+              Online Users
+            </md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="user in users" ng-click="null">
+              <ng-md-icon icon="person" size="36" class="md-avatar" style="fill:lime;">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column" style="color:white;">
+                <md-tooltip md-direction="top">
+                  {{user.datetime|date:"fullDate"}}
+                  <br>
+                  {{username}}
+                  {{user.datetime|date:"shortTime"}}
+                </md-tooltip>
+                <h3>{{user.username}}<span ng-if="user.username==username"> (you)</span></h3>
+                <h4>Logged in {{(now-user.datetime)|ago}}</h4>
+              </div>
+            </md-list-item>
+          </md-list>
+          <md-list class="md-dense" flex ng-hide="!loggedIn">
+            <md-subheader class="md-no-sticky">
+              Actions
+            </md-subheader>
+            <md-list-item class="md-1-line"
+            ng-hide="path==='settings'||path==='/settings'"
+            ng-click="openLink('settings',false)">
+              <ng-md-icon icon="settings" size="36"
+              class="md-avatar"
+              style="fill:lightGray">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column">
+                <h3>Settings</h3>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-1-line"
+            ng-hide="path!=='settings'&&path!=='/settings'"
+            ng-click="openLink('/',false)">
+              <ng-md-icon icon="home" size="36"
+              class="md-avatar"
+              style="fill:yellow">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column">
+                <h3>Home</h3>
+              </div>
+            </md-list-item>
+            <md-list-item class="md-1-line" ng-click="null"
+            onclick="location.reload();">
+              <ng-md-icon icon="logout" size="36"
+              class="md-avatar"
+              style="fill:OrangeRed">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column">
+                <h3>Logout</h3>
+              </div>
+            </md-list-item>
+          </md-list>
+          <md-list class="md-dense" flex>
+            <md-subheader class="md-no-sticky">
+              Links
+            </md-subheader>
+
+
+            <md-list-item class="md-1-line"
+            ng-hide="path==='about'||path==='/about'"
+            ng-click="openLink('about',false)">
+              <ng-md-icon icon="info" size="36"
+              class="md-avatar"
+              style="fill:orange">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column">
+                <h3>About</h3>
+              </div>
+            </md-list-item>
+
+
+            <md-list-item class="md-1-line"
+            ng-hide="path!=='about'&&path!=='/about'"
+            ng-click="openLink('/',false)">
+              <ng-md-icon icon="home" size="36"
+              class="md-avatar"
+              style="fill:yellow">
+              </ng-md-icon>
+              <div class="md-list-item-text" layout="column">
+                <h3>Home</h3>
+              </div>
+            </md-list-item>
+
+
+            <span ng-repeat="link in links">
+            <md-list-item class="md-1-line" ng-click="openLink(link.url,link.blankTarget)">
+              <ng-md-icon icon="{{link.icon}}" size="36"
+              class="md-avatar"
+              style="fill:{{link.fill}};" ng-if="link.icon!='./images/wpgit.svg'&&link.icon!='./images/ssllabs.svg'">
+              </ng-md-icon>
+              <md-icon md-svg-src="{{link.icon}}" aria-label="{{link.name}}" class="md-avatar"
+              style="border-radius:0;margin-right:10px;width:48px;height:48px;margin-left:0;"
+              ng-if="link.icon=='./images/wpgit.svg'||link.icon=='./images/ssllabs.svg'"></md-icon>
+              <div class="md-list-item-text" layout="column">
+                <md-tooltip md-direction="top">
+                  JavaCrypt's {{link.name}} Page
+                </md-tooltip>
+                <h3>{{link.name}}</h3>
+              </div>
+            </md-list-item>
+            </span>
+          </md-list>
+        </md-content>
+      </md-sidenav>
+      <div ng-view flex layout="column">
+        <!-- router -->
+      </div>
+    </md-content>
+    <!-- crypto stuff -->
+    <script src="./js/crypto/AES.js"></script>
+    <script src="./js/crypto/CTR.js"></script>
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <!-- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+
+    <!-- module -->
+    <script src="./js/app.js"></script>
+    <!-- router -->
+    <script src="./js/config/router.js"></script>
+    <!-- services -->
+    <script src="./js/services/socket.js"></script>
+    <script src="./js/services/crypto.js"></script>
+    <script src="./js/services/userlist.js"></script>
+    <script src="./js/services/session.js"></script>
+    <script src="./js/services/messages.js"></script>
+    <script src="./js/services/links.js"></script>
+    <!-- controllers -->
+    <script src="./js/controllers/main.js"></script>
+    <script src="./js/controllers/socket.js"></script>
+    <script src="./js/controllers/userlist.js"></script>
+    <script src="./js/controllers/messages.js"></script>
+    <script src="./js/controllers/links.js"></script>
+    <!-- directives -->
+    <script src="./js/directives/enter.js"></script>
+    <script src="./js/directives/chat.js"></script>
+    <script src="./js/directives/login.js"></script>
+
+    <!-- filters -->
+    <script src="./js/filters/ago.js"></script>
+
+  </body>
+</html>
