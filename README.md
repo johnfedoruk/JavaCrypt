@@ -1,6 +1,6 @@
 ## JavaCrypt ##
 
-JavaCrypt is an online chat interface that implements client side encryption. 
+JavaCrypt is an online chat interface that implements client side encryption.
 
 ## Motivation ##
 
@@ -15,7 +15,7 @@ Upon login, some credentials are sent in plaintext to the server. These include:
 * The chatroom you wish to join
 * The unix timestamp
 
-Additionally, an greeting message will be encrypted and sent to everyone else in the chatroom. They will attempt to decrypt the message, and should they recognise the message they will know that they are speaking to somebody who has the same key. This is used for filtering background noise.
+Additionally, a greeting message will be encrypted and sent to everyone else in the chatroom. They will attempt to decrypt the message, and should they recognise the message they will know that they are speaking to somebody who has the same key. This is used for filtering background noise.
 
 JavaCrypt uses AES256 in CTR mode by default to encrypt each message prior to sending the message to the server. AES192 and AES128 are also available upon login for performance reasons. The messages are then decrypted by everybody else in the chatroom using the key that they chose – again, on the client side.
 

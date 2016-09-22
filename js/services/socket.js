@@ -5,7 +5,7 @@ app.factory(
       // debugging only
       //var address = "ws://localhost:8080/chat/websocket";
       var address = "wss://javacrypt.net:8081/chat/websocket";
-      var sock = new WebSocket(socketAddress);
+      var sock = new WebSocket(address);
       var callbacks={
         onopen:[],
         onmessage:[],
