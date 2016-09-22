@@ -10,6 +10,7 @@ Licensee may use Software for the purpose of:
 * Publishing Software’s output to Licensee and 3rd Parties;
 * Distribute verbatim copies of Software’s output (including compiled binaries);
 * Modify Software to suit Licensee’s needs and specifications.
+
 ### Duration ###
 This license is granted perpetually, as long as you do not materially breach it.
 ### Non Assignable & Non-Transferable ###
@@ -28,6 +29,7 @@ The Term of this license shall be until terminated. Licensor may terminate this 
 * exported The Software to any jurisdiction where licensor may not enforce his rights under this agreements in; or
 * Licensee in breach of any of the terms of clause 2 to this license; or
 * Licensee otherwise entered into any arrangement which caused Licensor to be unable to enforce his rights under this License.
+
 ## Payment ##
 In consideration of the License granted under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other mean which Licensor may deem adequate. Failure to perform payment shall construe as material breach of this Agreement.
 ## Upgrades, Updates and Fixes ##
