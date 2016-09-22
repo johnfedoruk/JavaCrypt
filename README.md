@@ -1,6 +1,8 @@
 ## JavaCrypt ##
 
-JavaCrypt is an online chat interface that implements client side encryption.
+![alt text](https://javacrypt.net/images/JavaCryptLogo.png "JavaCrypt")
+
+[JavaCrypt](https://javacrypt.net) is an online chat interface that implements client side encryption.
 
 ## Motivation ##
 
@@ -22,3 +24,11 @@ JavaCrypt uses AES256 in CTR mode by default to encrypt each message prior to se
 ## Server Code ##
 
 The server code is not going to be made available. If you are interested in using the server side code, please contact me to discuss some enterprise solutions.
+
+## To do ##
+
+Our todo list is available to view [here](https://github.com/johnfedoruk/JavaCrypt/blob/master/TODO.md)
+
+## License ##
+
+Our license is available to view [here](https://github.com/johnfedoruk/JavaCrypt/blob/master/LICENSE.md)
