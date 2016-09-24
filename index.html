@@ -123,10 +123,10 @@
       </div>
 
       <span  ng-controller="LinksController" style="margin-top:10px;" hide show-gt-sm>
-      <md-button class="md-fab" aria-label="" ng-click="null"
+      <md-button class="md-fab" aria-label=""
       style="background:rgba(255,255,255,0.95);padding:5px!;
       height:40px;width:40px;"
-      ng-repeat="link in links" ng-click="null">
+      ng-repeat="link in links" ng-click="openLink(link.url,link.blankTarget)">
         <ng-md-icon icon="{{link.icon}}" size="24"
         class="md-avatar"
         style="fill:{{link.fill}};" ng-if="link.icon!='./images/wpgit.svg'&&link.icon!='./images/ssllabs.svg'">

@@ -4,14 +4,6 @@ app.factory(
     "$location",
     function($location) {
       var links = [
-        /*
-        {
-          name:"About",
-          url:"about",
-          icon:"info",
-          fill:"orange",
-          blankTarget:false
-        },*/
         {
           name:"Github",
           url:"https://github.com/johnfedoruk/JavaCrypt",
@@ -21,21 +13,21 @@ app.factory(
         },
         {
           name:"facebook",
-          url:"https://facebook.com/javacrypt",
+          url:"https://facebook.com/javacrypt.net",
           icon:"facebook",
           fill:"#3b5998",
           blankTarget:true
         },
         {
           name:"Twitter",
-          url:"https://twitter.com/javacrypt",
+          url:"https://twitter.com/javacrypt256",
           icon:"twitter",
           fill:"#00aced",
           blankTarget:true
         },
         {
           name:"Google Plus",
-          url:"https://googleplus.com/javacrypt",
+          url:"https://plus.google.com/u/0/b/113820666640024502614/113820666640024502614/",
           icon:"google-plus",
           fill:"#db4437",
           blankTarget:true

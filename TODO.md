@@ -24,9 +24,9 @@
 
 ## Social Media ##
 - [x] Create GitHub page
-- [ ] Create Facebook Page
-- [ ] Create Google Plus page
-- [ ] Create Twitter Page
+- [x] Create Facebook Page
+- [x] Create Google Plus page
+- [x] Create Twitter Page
 - [x] Get SSLLabs report
 
 ## Login ##
