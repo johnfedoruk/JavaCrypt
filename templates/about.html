@@ -2,9 +2,110 @@
   <md-content id="messageArea" flex style="padding: 10px;">
     <article flex>
       <section flex class="md-whiteframe-4dp"
+      style="padding:10px;margin-top:5px;word-break:break-word;" layout="row">
+      <span flex>
+      </span>
+        <img ng-src="./images/javacrypt.svg" style="max-width:96%;max-height:100%;"/>
+      <span flex>
+      </span>
+      </section>
+      <section flex class="md-whiteframe-4dp"
       style="padding:10px;margin-top:5px;word-break:break-word;">
-        <h1>About</h>
-        <p>About page is not yet implemented.. please check back again!</p>
+        <h1>
+          Client Side Crypto-Chat
+        </h1>
+        <p>
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+          is not your average chat program. It uses some of the strongest symmetric
+          encryption algorithms to protect your messages from within the browser.
+        </p>
+        <p>
+          If you choose to use encryption, then our servers will never see an
+          unencrypted message from your chat.
+        </p>
+      </section>
+      <section flex class="md-whiteframe-4dp"
+      style="padding:10px;margin-top:5px;word-break:break-word;">
+        <h1>
+          Motivation
+        </h1>
+        <p>
+          Almost all applications implement some form of encryption; be it
+          client side encryption or simply SSL. Unfortunately, being
+          proprietary software, nobody can audit the quality of the
+          implementation for many of these chat applications.
+        </p>
+        <p>
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+          doesn’t just rely on SSL. We understand fully that our
+          servers or the servers of the certificate authorities may be a vector
+          of attack. We implement client side encryption so no message can be
+          parsed by a bad actor with certificate authority or server access.
+        </p>
+      </section>
+      <section flex class="md-whiteframe-4dp"
+      style="padding:10px;margin-top:5px;word-break:break-word;">
+        <h1>
+          Implementation
+        </h1>
+        <p>
+          Upon login, some credentials are sent in plaintext to the server.
+          These include:
+        </p>
+        <ul>
+          <li>
+            Your username
+          </li>
+          <li>
+            The chatroom you wish to join
+          </li>
+          <li>
+            The unix timestamp
+          </li>
+        </ul>
+        <p>
+          Additionally, a greeting message will be encrypted and sent to
+          everyone else in the chatroom. They will attempt to decrypt the
+          message, and should they recognise the message they will know that
+          they are speaking to somebody who has the same key. This is used for
+          filtering background noise.
+        </p>
+        <p>
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+          uses AES256 in CTR mode by default to encrypt each message
+          prior to sending the message to the server. AES192 and AES128 are
+          also available upon login for performance reasons. The messages are
+          then decrypted by everybody else in the chatroom using the key that
+          they chose – again, on the client side.
+        </p>
+      </section>
+      <section flex class="md-whiteframe-4dp"
+      style="padding:10px;margin-top:5px;word-break:break-word;">
+        <h1>
+          Disclaimer
+        </h1>
+        <p>
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+          is beta! Please view the
+          <a href="https://github.com/johnfedoruk/JavaCrypt">source</a> and
+          determine if it is right for you. We hold no legal responsibility to
+          protecting your data. Hopefully we can help though.
+        </p>
+        <p>
+          For addded security, after viewing the source code and determining
+          for yourself that
+          <font color="#F89820">Java</font><font color="#5382A1">Crypt</font>
+          meets your security needs - please consider hosting your own source
+          for your own use. This way the code that your execute is in
+          <b>your</b> control... just a suggestion.
+        </p>
+        <p>
+          For more information about the rights you have to use this code, and
+          what warranty you get with it (hint- you don't get any warranty),
+          please view our <a href=
+          "https://github.com/johnfedoruk/JavaCrypt/blob/master/LICENSE.md">
+          licence</a>.
+        </p>
       </section>
     </article>
   </md-content>

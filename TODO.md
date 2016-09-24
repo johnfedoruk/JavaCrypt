@@ -15,12 +15,12 @@
 
 ## About ##
 - [x] Create About page
-- [ ] Discussion on importance of information security
+- [x] Discussion on importance of information security
 - [ ] Display SSLLabs A+ report
-- [ ] Include description of how JavaCrypt works
+- [x] Include description of how JavaCrypt works
 - [ ] Include Flash video of how JavaCrypt works
-- [ ] Include disclaimer
-- [ ] Include License
+- [x] Include disclaimer
+- [x] Include License
 
 ## Social Media ##
 - [x] Create GitHub page
